@@ -1,9 +1,6 @@
 package com.mark.developer.jugtours.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import com.mark.developer.jugtours.model.User;
 
 import jakarta.persistence.ManyToOne;
@@ -12,6 +9,7 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
 @Table(name = "user_group")
@@ -28,11 +26,19 @@ public class Group {
     private String country;
     private String postalCode;
 
-//    @ManyToOne(cascade=CascadeType.PERSIST)
-//    private User user;
+    @ManyToOne()
+    private User user;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Event> events;
+
+    public Group(String name, String city, String state, String country, String postalCode){
+        this.name = name;
+        this.city = city;
+        this.stateOrProvince = state;
+        this.country = country;
+        this.postalCode = postalCode;
+    }
 
 }
 

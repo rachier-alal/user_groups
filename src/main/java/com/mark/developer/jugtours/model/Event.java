@@ -21,6 +21,7 @@ import java.util.Set;
 public class Event{
 
     @Id
+    @GeneratedValue
     private Long event_id;
     private Instant date;
     private String title;

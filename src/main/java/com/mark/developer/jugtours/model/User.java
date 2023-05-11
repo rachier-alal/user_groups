@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-
+@Entity
 public class User {
 
     @Id
